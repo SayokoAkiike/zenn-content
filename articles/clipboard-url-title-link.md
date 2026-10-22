@@ -3,7 +3,7 @@ title: "URLを貼ったらタイトルになった。リンクはどこへ消え
 emoji: "🔗"
 type: "tech"
 topics: ["javascript", "html", "web", "browser"]
-published: false
+published: true
 ---
 
 Zennで書いた記事をX（旧Twitter）で紹介しようと思い、URLをコピーして貼り付けた。
