@@ -3,7 +3,7 @@ title: "小は大を兼ねる…!? SLM（小規模言語モデル）の有用性
 emoji: "🤖"
 type: "tech"
 topics: ["slm", "llm", "生成ai", "機械学習", "aiエージェント"]
-published: false
+published: true
 ---
 
 「大は小を兼ねる」ということわざがあります。
