@@ -340,3 +340,6 @@ World Modelを小さくするなら、「何bitまで落とせるか」と同じ
 4. Zhou, J. et al. (2026). [QuantWAMs: Calibrating at the Right Granularity for World Action Models](https://arxiv.org/abs/2607.28405). arXiv:2607.28405.
 
 ※本記事は公開論文に基づく解説であり、独自の量子化実験やロボット実機での再現は行っていません。論文の結果と、一般化した設計上の考察は区別して記述しています。
+
+
+<!-- zenn redeploy retry: 2026-10-25 -->
