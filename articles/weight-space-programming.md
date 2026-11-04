@@ -244,6 +244,34 @@ Qwenの失敗は、「解答を進める途中で、同じところへ戻って�
 
 さらに、選ばれた層や方向を人間が指定した簡単な手法でも同じ改善が得られるのか。生成時の設定を変えるだけで、どこまでループが減るのか。そうした比較があれば、Astraが担った仕事の価値がもっと見えやすくなると思います。
 
+## 追試では、どこまで再現できた？
+
+公開後には、別のモデルや条件で確かめる実験も出てきました。以下は2026年11月5日時点の公開報告です。まだ小規模な検証なので、数値と条件をセットで見ていきましょう。
+
+### Opusも、Qwenの修正を見つけた
+
+[weightspace](https://pypi.org/project/weightspace/)は、WSPを試すためのPythonフレームワークです。その実験では、Opus 5.5が4つのMLPニューロンの出力を6倍にする編集を見つけ、MATH-500で改善を報告しています。[^weightspace]
+
+| 同じthinking有効条件での比較 | MATH-500 |
+| --- | ---: |
+| 未編集 | 8.4% |
+| 原研究で公開された編集を適用 | 52.4% |
+| Opusが見つけた編集を適用 | 40.0% |
+
+評価は先頭250問・各問1サンプル。Opusは7回の実行要求で編集を見つけています。原研究とは評価範囲や探索予算が違うため、Astraとの性能順位は決められません。
+
+さらに、この報告ではthinkingをオフにした未編集モデルも評価し、MATH-500で46.4%を得ています。こちらは500問・生成条件も異なります。各表の数字をそのまま競わせることはできませんが、「重み編集以外の対処とも比べたい」という先ほどの問いに、具体的な材料が出てきました。[^weightspace]
+
+### 左右を逆にしたBreakoutでも作れる？
+
+[alan-turing-institute/weights_editing](https://github.com/alan-turing-institute/weights_editing)では、重みを読む実験とゲーム用の重みを作る実験を追試しています。AstraのBreakoutは3回平均457点。一方、Seaquestは原報告53.1点に対して25.5点で、結果にはばらつきがありました。[^replication]
+
+面白いのは追加の対照実験です。Breakoutの左右操作を入れ替えたり、盤面を上下逆にしたりして、変更した仕様から重みを作らせています。Astraは両方で平均約515点を記録しました。
+
+元のBreakout用ネットワークをそのまま使うと、この変更版ではほとんど得点できません。「既知の攻略用の重みを思い出しただけ」という説明を確かめる、よい工夫です。仕様に合わせて処理を作ったという見方を支えますが、各条件3回という規模は押さえておきたいところです。[^replication]
+
+追試の価値は、同じ高得点が出たかだけには収まりません。何が再現し、どこで不安定になり、どんな別解があるか。そこまで追うと、WSPでできる仕事が少しずつ具体的になってきます。
+
 ## 重みの中に「意味」はあるのか
 
 例えば、一つの重みが0.382だったとして、その数字だけで何を担当しているかは分かりません。
@@ -267,3 +295,6 @@ Qwenの失敗は、「解答を進める途中で、同じところへ戻って�
 [^confirmation]: [Astraの最終回答](https://github.com/RikiyaT/lm_understand-logs/blob/main/exp8_math/runs/p50c/final_answer.md)。訓練用問題から分けた確認用データでの成績で、テストベンチマークとは別。
 [^language]: [Experiment 3の設定と検証方法](https://github.com/RikiyaT/lm_understand-logs/blob/main/exp3_language/README.md)。
 [^gemma]: [Gemma 3 270Mでの追加実験](https://github.com/RikiyaT/lm_understand-logs/blob/main/exp8_math/gemma_followup/README.md)。
+
+[^weightspace]: [weightspaceのExperiment 8追試結果](https://pypi.org/project/weightspace/#results-exp-8-replication)。プロジェクト自身の報告。thinking有効・無効では評価範囲、生成条件も異なる。2026年11月5日確認。
+[^replication]: [weights_editingの追試・対照実験](https://github.com/alan-turing-institute/weights_editing)。進行中の公開実験。ゲーム生成の各条件は3回の平均。2026年11月5日確認。
