@@ -1,5 +1,5 @@
 ---
-title: "AIを「使う」から「設計・評価できる」へ：RAGの失敗診断から学ぶ実務の基本"
+title: "「API切り貼り」から脱却！AIの中身を理解して「精度改善」にコミットできるエンジニアになるために：RAGの失敗診断から学ぶ実務の基本"
 emoji: "🛠️"
 type: "tech"
 topics: ["llm", "rag", "python", "langchain", "ai"]
