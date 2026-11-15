@@ -3,7 +3,7 @@ title: "実験自動化にVLAはどこまで必要？ チューブ遠心タス�
 emoji: "🧪"
 type: "tech"
 topics: ["robotics", "vla", "computervision", "python"]
-published: false
+published: true
 ---
 「ロボットアームで1.5 mLチューブを遠心機に入れ、遠心後に取り出して元の位置へ戻したい」。
 
